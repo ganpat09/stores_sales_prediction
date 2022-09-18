@@ -1,0 +1,79 @@
+columns:
+   Item_Identifier            :  object 
+   Item_Weight                :  float
+   Item_Fat_Content           :  object 
+   Item_Visibility            :  float
+   Item_Type                  :  object 
+   Item_MRP                   :  float
+   Outlet_Identifier          :  object 
+   Outlet_Establishment_Year  :  int 
+   Outlet_Size                :  object 
+   Outlet_Location_Type       :  object 
+   Outlet_Type                :  object 
+   Item_Outlet_Sales          :  float
+
+  
+
+numerical_columns:
+   - Item_Weight              
+   - Item_Visibility          
+   - Item_MRP                 
+   - Outlet_Establishment_Year
+
+
+
+categorical_columns:
+   - Item_Identifier          
+   - Item_Fat_Content         
+   - Item_Type                
+   - Outlet_Identifier        
+   - Outlet_Size              
+   - Outlet_Location_Type     
+   - Outlet_Type              
+
+
+
+
+target_column: Item_Outlet_Sales
+
+domain_value:
+  Item_Fat_Content:
+    - Low Fat  
+    - Regular  
+
+  Item_Type :
+    - Fruits and Vegetables 
+    - Snack Foods           
+    - Household             
+    - Frozen Foods          
+    - Dairy                 
+    - Canned                
+    - Baking Goods          
+    - Health and Hygiene    
+    - Soft Drinks           
+    - Meat                  
+    - Breads                
+    - Hard Drinks           
+    - Others                
+    - Starchy Foods         
+    - Breakfast             
+    - Seafood
+
+  Outlet_Size :
+    - Medium   
+    - Small     
+    - High     
+
+
+  Outlet_Location_Type:
+    - Tier 3  
+    - Tier 2   
+    - Tier 1  
+
+  Outlet_Type:
+    - Supermarket Type1    
+    - Grocery Store        
+    - Supermarket Type3     
+    - Supermarket Type2                           
+
+
