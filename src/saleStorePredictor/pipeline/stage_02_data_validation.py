@@ -1,16 +1,15 @@
 from saleStorePredictor.config import ConfigurationManager
-from saleStorePredictor.components import DataIngestion
+from saleStorePredictor.components import DataValidation
 from saleStorePredictor import logger
 
-STAGE_NAME = "Data Ingestion stage"
+STAGE_NAME = "Data Validation stage"
 
 def main():
-    config = ConfigurationManager()
-    data_ingestion_config = config.get_data_ingestion_config()
-    data_ingestion = DataIngestion(config=data_ingestion_config)
-    data_ingestion.download_file()
-    data_ingestion.unzip_and_clean()
-    data_ingestion.split_data_as_train_test()
+    config_manager = ConfigurationManager()
+    config = config_manager.get_data_validation_config()
+    data_validation = DataValidation(config)
+    data_validation.validate_schema()
+    data_validation.remove_duplicates()
 
 
 if __name__ == '__main__':

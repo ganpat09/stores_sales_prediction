@@ -1,1 +1,2 @@
 from saleStorePredictor.components.data_ingestion import DataIngestion
+from saleStorePredictor.components.data_validation import DataValidation
