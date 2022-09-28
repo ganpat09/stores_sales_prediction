@@ -1,0 +1,2 @@
+best_model:
+  model_path: artifacts\trained_model\model.pkl

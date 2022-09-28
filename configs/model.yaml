@@ -1,0 +1,58 @@
+grid_search:
+  class: GridSearchCV
+  module: sklearn.model_selection
+  params:
+    cv: 2
+    verbose: 2
+model_selection:
+  module_0:
+    class: ElasticNet
+    module: sklearn.linear_model
+    params:
+      fit_intercept: true
+      random_state: 0
+      alpha: 0.1
+
+    search_param_grid:
+      fit_intercept:
+      - true
+      - false
+      alpha:
+      - 0.1
+      - 0.2
+      - 0.3
+
+      l1_ratio:
+      - 0.5
+      - 0
+      - 1.0
+     
+
+  module_1:
+    class: XGBRegressor
+    module: xgboost
+    params:
+      objective: reg:linear
+      seed: 100
+     
+      
+    search_param_grid:
+      n_estimators:
+      - 10
+      
+    
+      
+
+
+
+
+
+
+  
+
+       
+
+
+
+
+    

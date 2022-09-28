@@ -14,34 +14,36 @@ data_ingestion:
 
 
 data_validation_config:
-  schema_dir: config
+  schema_dir: configs
   schema_file_name: schema.yaml
   validated_dir: artifacts/data_validation
   validated_train_dir: artifacts/data_validation/validated_train
   validated_test_dir: artifacts/data_validation/validated_test
 
-  
-
-  
 
 data_transformation_config:
-  add_bedroom_per_room: true
-  transformed_dir: transformed_data
+  transformed_dir: artifacts/transformed_data
   transformed_train_dir: train
   transformed_test_dir: test
-  preprocessing_dir: preprocessed
+  transformed_train_file_name: Train.npz
+  transformed_test_file_name: Test.npz
+
+  preprocessing_dir: artifacts/preprocessed
   preprocessed_object_file_name: preprocessed.pkl
+
   
 model_trainer_config:
-  trained_model_dir: trained_model
+  trained_model_dir: artifacts/trained_model
   model_file_name: model.pkl
-  base_accuracy: 0.6
-  model_config_dir: config
+  model_report_file_name: model_report.json
+  base_accuracy: 0.5
+  model_config_dir: configs
   model_config_file_name: model.yaml
 
 
 model_evaluation_config:
-  model_evaluation_file_name: model_evaluation.yaml
+  model_evaluation_file_name: artifacts/model_evaluation/model_evaluation.yaml
+  best_model: best_model
   
 
 model_pusher_config:

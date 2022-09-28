@@ -1,0 +1,10 @@
+{
+    "is_trained": true,
+    "trained_model_file_path": "artifacts\\trained_model\\model.pkl",
+    "train_rmse": 992.831270888498,
+    "test_rmse": 1109.6745746498264,
+    "train_accuracy": 0.6567305004423123,
+    "test_accuracy": 0.5885394025395979,
+    "model_accuracy": 0.6207678759991109,
+    "time_stamp": "2022-09-26 21:57"
+}

@@ -35,6 +35,7 @@ class DataValidation:
     def remove_duplicates(self):
         self.train = self.train.drop_duplicates()
         self.test = self.test.drop_duplicates()
-        self.train.to_csv(self.data_validation_config.training_dataset)
-        self.test.to_csv(self.data_validation_config.test_dataset)
+        
+        self.train.to_csv(self.data_validation_config.training_dataset,index=False)
+        self.test.to_csv(self.data_validation_config.test_dataset,index=False)
         print("succefully remove duplicated")
