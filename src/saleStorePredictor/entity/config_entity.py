@@ -48,3 +48,8 @@ class ModelEvaluationConfig:
     time_stamp: float      
 
 
+@dataclass(frozen=True)
+class ModelPusherConfig:
+    model_pusher_file_path: str
+    
+

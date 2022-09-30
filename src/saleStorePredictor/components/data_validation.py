@@ -1,4 +1,5 @@
 import pandas  as pd
+from saleStorePredictor.entity.artifact_entity import DataIngestionArtifact
 from saleStorePredictor.utils import read_yaml
 import os
 from pathlib import Path
@@ -7,10 +8,12 @@ from saleStorePredictor.config import ConfigurationManager
 
 class DataValidation:
 
-    def __init__(self,data_validation_config:DataValidationConfig):
+    def __init__(self,data_validation_config:DataValidationConfig,data_ingestion_artifact:DataIngestionArtifact):
         self.data_validation_config = data_validation_config
-        self.train = pd.read_csv(self.data_validation_config.training_dataset)
-        self.test = pd.read_csv(self.data_validation_config.test_dataset)
+        self.data_ingestion_artifact = data_ingestion_artifact
+        self.train = pd.read_csv(self.data_ingestion_artifact.train_file_path)
+        self.test = pd.read_csv(self.data_ingestion_artifact.test_file_path)
+        
 
     def validate_schema(self):
        

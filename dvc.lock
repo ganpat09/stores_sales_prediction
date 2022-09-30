@@ -1,0 +1,131 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/saleStorePredictor/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: configs/config.yaml
+      md5: fe33ed7e8cb0416410ea295484589022
+      size: 1511
+    - path: src/saleStorePredictor/components/data_ingestion.py
+      md5: b96a3456c1bef23762e698ccea43858d
+      size: 3966
+    outs:
+    - path: artifacts/data_ingestion/ingested_test_dir
+      md5: 12e06698683073d97609e0c4f193aa92.dir
+      size: 287449
+      nfiles: 1
+    - path: artifacts/data_ingestion/ingested_train_dir
+      md5: 3a322e354213d1723f3f955db4685270.dir
+      size: 584334
+      nfiles: 1
+    - path: artifacts/data_ingestion/raw
+      md5: 51cb32c0624a37d6e22b8ab73eed56ad.dir
+      size: 1397246
+      nfiles: 2
+  data_validation:
+    cmd: python src/saleStorePredictor/pipeline/stage_02_data_validation.py
+    deps:
+    - path: artifacts/data_ingestion/raw
+      md5: 51cb32c0624a37d6e22b8ab73eed56ad.dir
+      size: 1397246
+      nfiles: 2
+    - path: configs/config.yaml
+      md5: fe33ed7e8cb0416410ea295484589022
+      size: 1511
+    - path: configs/schema.yaml
+      md5: 60c2b88339c7aac277db671a43efc2a1
+      size: 1818
+    - path: src/saleStorePredictor/components/data_validation.py
+      md5: e411ad24e7cc2f9d060a1522798bbda7
+      size: 1667
+    - path: src/saleStorePredictor/pipeline/stage_01_data_ingestion.py
+      md5: ffd03ae03a17cdd5426add1a9dcb6d37
+      size: 778
+    outs:
+    - path: artifacts/data_validation/validated_test
+      md5: 12e06698683073d97609e0c4f193aa92.dir
+      size: 287449
+      nfiles: 1
+    - path: artifacts/data_validation/validated_train
+      md5: 3a322e354213d1723f3f955db4685270.dir
+      size: 584334
+      nfiles: 1
+  data_transformation:
+    cmd: python src/saleStorePredictor/pipeline/stage_03_data_preprocessing.py
+    deps:
+    - path: artifacts/data_validation/validated_test
+      md5: 12e06698683073d97609e0c4f193aa92.dir
+      size: 287449
+      nfiles: 1
+    - path: artifacts/data_validation/validated_train
+      md5: 3a322e354213d1723f3f955db4685270.dir
+      size: 584334
+      nfiles: 1
+    - path: configs/config.yaml
+      md5: fe33ed7e8cb0416410ea295484589022
+      size: 1511
+    - path: configs/schema.yaml
+      md5: 60c2b88339c7aac277db671a43efc2a1
+      size: 1818
+    - path: src/saleStorePredictor/components/data_preprocessing.py
+      md5: 1c30b6d86055f158fdd5dcad0d6010ce
+      size: 7992
+    - path: src/saleStorePredictor/pipeline/stage_02_data_validation.py
+      md5: 2245f79ce42d880acd65f7951a5a60e0
+      size: 811
+    outs:
+    - path: artifacts/preprocessed
+      md5: 235bfdc59a67f5150ed3efd3b39f298d.dir
+      size: 3955
+      nfiles: 1
+    - path: artifacts/transformed_data
+      md5: 4363c3aff461797da282b66b631b1eb7.dir
+      size: 886648
+      nfiles: 2
+  training:
+    cmd: python src/saleStorePredictor/pipeline/stage_04_model_training.py
+    deps:
+    - path: artifacts/preprocessed/preprocessed.pkl
+      md5: 442da8f7a1a52ac3ca8b81fa65d89033
+      size: 3955
+    - path: configs/config.yaml
+      md5: fe33ed7e8cb0416410ea295484589022
+      size: 1511
+    - path: configs/model.yaml
+      md5: 28561a9764b71611dbde1dcd1ff4c84a
+      size: 727
+    - path: src/saleStorePredictor/components/model_training.py
+      md5: 2b4833e1d9e8710e380d508f6e24d9d5
+      size: 6480
+    - path: src/saleStorePredictor/pipeline/stage_03_data_preprocessing.py
+      md5: 64f8769f30af9dfdf49262a1d7419a8d
+      size: 678
+    outs:
+    - path: artifacts/trained_model/model.pkl
+      md5: 1160f241a6458c4d9905f156c2245107
+      size: 71363
+    - path: artifacts/trained_model/model_report.json
+      md5: b198fdaa24f33a04b6cae0f115df8180
+      size: 341
+  evaluation:
+    cmd: python src/saleStorePredictor/pipeline/stage_05_model_evaluation.py
+    deps:
+    - path: artifacts/trained_model/model.pkl
+      md5: 1160f241a6458c4d9905f156c2245107
+      size: 71363
+    - path: configs/config.yaml
+      md5: fe33ed7e8cb0416410ea295484589022
+      size: 1511
+    - path: configs/model.yaml
+      md5: 28561a9764b71611dbde1dcd1ff4c84a
+      size: 727
+    - path: configs/schema.yaml
+      md5: 60c2b88339c7aac277db671a43efc2a1
+      size: 1818
+    - path: src/saleStorePredictor/components/model_evaluation_pusher.py
+      md5: bd8ac007f06cd4b201711fc30a72b291
+      size: 8665
+    outs:
+    - path: prediction_service/model.pkl
+      md5: 1160f241a6458c4d9905f156c2245107
+      size: 71363

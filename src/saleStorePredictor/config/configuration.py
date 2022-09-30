@@ -1,5 +1,6 @@
 from logging import exception
 from saleStorePredictor.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH, SCHEMA_FILE_PATH
+from saleStorePredictor.entity.config_entity import ModelPusherConfig
 from saleStorePredictor.utils import read_yaml, create_directories, load_json
 from saleStorePredictor.entity import DataIngestionConfig, ModelTrainerConfig,ModelTrainerArtifact,ModelEvaluationConfig
 from saleStorePredictor.entity import DataValidationConfig, DataTransformationConfig,DataTransformationArtifact,DataIngestionArtifact
@@ -34,6 +35,19 @@ class ConfigurationManager:
 
         return data_ingestion_config
 
+    def get_pusher_config(self) -> ModelPusherConfig:
+
+        config = self.config.model_pusher_config
+
+
+        pusher_config = ModelPusherConfig(
+            model_pusher_file_path = config.model_export_dir
+        )
+
+        return pusher_config
+
+
+
 
     def get_data_ingestion_artifact(self) -> DataIngestionArtifact:
 
@@ -52,11 +66,14 @@ class ConfigurationManager:
 
     def get_data_validation_config(self) -> DataValidationConfig:
     
-        config = self.config.data_ingestion
+        config = self.config.data_validation_config
+        ingestion_config = self.config.data_ingestion
+
+        create_directories([config.validated_train_dir,config.validated_test_dir])
         
 
-        training_dataset = os.path.join(config.ingested_train_dir,config.train_file_name)
-        testing_dataset = os.path.join(config.ingested_test_dir,config.test_file_name)
+        training_dataset = os.path.join(config.validated_train_dir,ingestion_config.train_file_name)
+        testing_dataset = os.path.join(config.validated_test_dir,ingestion_config.test_file_name)
         dataValidationConfig = DataValidationConfig(
             training_dataset=training_dataset,
             test_dataset=testing_dataset,

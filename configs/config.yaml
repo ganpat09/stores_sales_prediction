@@ -3,7 +3,7 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: https://www.kaggle.com/datasets/brijbhushannanda1979/bigmart-sales-data/download?datasetVersionNumber=1
+  source_URL: https://drive.google.com/file/d/1TlOwWTjQ3CuiClrDvGkVk_H4n2_ABKTu/view?usp=sharing
   local_data_file: artifacts/data_ingestion/raw_data.zip
   unzip_dir: artifacts/data_ingestion/raw
   ingested_train_dir: artifacts/data_ingestion/ingested_train_dir
@@ -47,4 +47,4 @@ model_evaluation_config:
   
 
 model_pusher_config:
-  model_export_dir: saved_models
+  model_export_dir: prediction_service/model.pkl

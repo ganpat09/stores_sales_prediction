@@ -7,7 +7,8 @@ STAGE_NAME = "Data Validation stage"
 def main():
     config_manager = ConfigurationManager()
     config = config_manager.get_data_validation_config()
-    data_validation = DataValidation(config)
+    ingestion_artifact = config_manager.get_data_ingestion_artifact()
+    data_validation = DataValidation(config,ingestion_artifact)
     data_validation.validate_schema()
     data_validation.remove_duplicates()
 

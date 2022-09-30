@@ -1,2 +1,13 @@
 best_model:
   model_path: artifacts\trained_model\model.pkl
+history:
+  2022-09-30 21:19:24.636159:
+    model_path: artifacts\trained_model\model.pkl
+  2022-09-30 21:21:38.236213:
+    model_path: artifacts\trained_model\model.pkl
+  2022-10-01 00:33:28.666167:
+    model_path: artifacts\trained_model\model.pkl
+  2022-10-01 00:40:59.469095:
+    model_path: artifacts\trained_model\model.pkl
+  2022-10-01 01:20:17.972014:
+    model_path: artifacts\trained_model\model.pkl

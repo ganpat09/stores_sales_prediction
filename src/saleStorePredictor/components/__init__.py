@@ -2,3 +2,4 @@ from saleStorePredictor.components.data_ingestion import DataIngestion
 from saleStorePredictor.components.data_validation import DataValidation
 from saleStorePredictor.components.data_preprocessing import DataTransformation
 from saleStorePredictor.components.model_training import ModelTrainer
+from saleStorePredictor.components.model_evaluation_pusher import ModelEvaluationAndPusher

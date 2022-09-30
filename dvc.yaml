@@ -1,0 +1,79 @@
+stages:
+  data_ingestion:
+    cmd: python src/saleStorePredictor/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/saleStorePredictor/components/data_ingestion.py
+      - configs/config.yaml
+    outs:
+      - artifacts/data_ingestion/raw
+      - artifacts/data_ingestion/ingested_train_dir
+      - artifacts/data_ingestion/ingested_test_dir
+      
+      
+
+  data_validation:
+    cmd: python src/saleStorePredictor/pipeline/stage_02_data_validation.py
+    deps:
+      - artifacts/data_ingestion/raw
+      - src/saleStorePredictor/pipeline/stage_01_data_ingestion.py
+      - src/saleStorePredictor/components/data_validation.py
+      - configs/config.yaml
+      - configs/schema.yaml
+
+    outs:
+      - artifacts/data_validation/validated_train
+      - artifacts/data_validation/validated_test
+
+      
+      
+    
+
+    
+
+
+  data_transformation:
+    cmd: python src/saleStorePredictor/pipeline/stage_03_data_preprocessing.py
+    deps: 
+      - src/saleStorePredictor/pipeline/stage_02_data_validation.py
+      - artifacts/data_validation/validated_train
+      - artifacts/data_validation/validated_test
+      - configs/config.yaml
+      - configs/schema.yaml
+      - src/saleStorePredictor/components/data_preprocessing.py
+
+    outs:
+      - artifacts/preprocessed
+      - artifacts/transformed_data
+
+
+
+  training:
+    cmd: python src/saleStorePredictor/pipeline/stage_04_model_training.py
+    deps:
+      - src/saleStorePredictor/pipeline/stage_03_data_preprocessing.py
+      - src/saleStorePredictor/components/model_training.py
+      - configs/config.yaml
+      - configs/model.yaml
+      - artifacts/preprocessed/preprocessed.pkl
+    
+    outs:
+      - artifacts/trained_model/model.pkl
+
+    metrics:
+    - artifacts/trained_model/model_report.json :
+        cache: false  
+
+  evaluation:
+    cmd: python src/saleStorePredictor/pipeline/stage_05_model_evaluation.py
+    deps:
+      - src/saleStorePredictor/components/model_evaluation_pusher.py
+      - configs/config.yaml
+      - configs/model.yaml
+      - configs/schema.yaml     
+      - artifacts/trained_model/model.pkl
+
+    outs:
+     - prediction_service/model.pkl
+
+    
+    
