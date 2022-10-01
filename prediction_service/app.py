@@ -1,5 +1,5 @@
 import streamlit as st
-import pickle
+import joblib
 import pandas as pd
 from pathlib import Path
 import os
@@ -27,7 +27,7 @@ current_path = os.getcwd()
 
 model_path = os.path.join(current_path,"prediction_service","model.pkl")
 with open(model_path, 'rb') as handle:
-    model = pickle.load(handle)
+    model = joblib.load(handle)
 
 
 item_Identifier = st.text_input(label="Item Identifier")
