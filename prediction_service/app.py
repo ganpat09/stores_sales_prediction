@@ -26,7 +26,7 @@ st.text(current_path)
 
 # getting the current path
 
-model_path = Path("model.pkl")
+model_path = os.path.join(current_path,"model.pkl")
 with open(model_path, 'rb') as handle:
     model = joblib.load(handle)
 
