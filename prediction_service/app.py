@@ -6,18 +6,11 @@ import os
 """
 # Sale Store Prediction
 
-   Item_Identifier            :  object 
-   Item_Weight                :  float
-   Item_Fat_Content           :  object 
-   Item_Visibility            :  float
-   Item_Type                  :  object 
-   Item_MRP                   :  float
-   Outlet_Identifier          :  object 
-   Outlet_Establishment_Year  :  int 
-   Outlet_Size                :  object 
-   Outlet_Location_Type       :  object 
-   Outlet_Type                :  object 
-   Item_Outlet_Sales          :  float
+Nowadays, shopping malls and Big Marts keep track of individual item sales data in
+order to forecast future client demand and adjust inventory management. In a data
+warehouse, these data stores hold a significant amount of consumer information and
+particular item details. By mining the data store from the data warehouse, more
+anomalies and common patterns can be discovered.
 
 
 """
@@ -35,7 +28,6 @@ form, batch = st.tabs(["Form Prediction", "Batch Prediction"])
 
 with batch:
    st.subheader("Batch Prediction")
-    #st.write(form)
    uploaded_file = st.file_uploader("Choose a file")
    if uploaded_file is not None:
    
@@ -47,12 +39,11 @@ with batch:
 
 with form:
    st.subheader("Form Prediction")
-   #st.write(form)
    item_Identifier = st.text_input(label="Item Identifier")
-   item_Weight = st.text_input(label="Item Weight")
+   item_Weight = st.text_input(label="Item Weight (float)")
 
    item_Fat_Content = st.selectbox("Item Fat Content",('Low Fat', 'Regular'))
-   item_Visibility = st.text_input(label="Item Visibility")
+   item_Visibility = st.text_input(label="Item Visibility (float)")
    item_Type = st.selectbox("Item Type", (
       'Fruits and Vegetables', 
       'Snack Foods', 
@@ -71,9 +62,9 @@ with form:
       'Breakfast', 
       'Seafood') )
 
-   item_MRP = st.text_input(label="Item MRP")
+   item_MRP = st.text_input(label="Item MRP (float)")
    outlet_Identifier = st.text_input(label="Outlet Identifier")
-   outlet_Establishment_Year = st.text_input(label="Outlet Establishment Year")
+   outlet_Establishment_Year = st.text_input(label="Outlet Establishment Year (Integer (Year only))")
    outlet_Size = st.selectbox("Outlet Size",("Medium","Small","High" ))
    outlet_Location_Type = st.selectbox("Outlet Location Type",(
       'Tier 3',  
