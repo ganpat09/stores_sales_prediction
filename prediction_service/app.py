@@ -83,7 +83,7 @@ if st.button('Submit'):
    'Outlet_Location_Type'       :  outlet_Location_Type,
    'Outlet_Type'                :  outlet_Type,
    }
-   df = pd.DataFrame(data=data)
+   df = pd.DataFrame(data=data,index=[0])
    result = model.predict(df)
    st.write("result = {0}".format(result))
 
