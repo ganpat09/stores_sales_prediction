@@ -123,8 +123,8 @@ stages:
       md5: 60c2b88339c7aac277db671a43efc2a1
       size: 1818
     - path: src/saleStorePredictor/components/model_evaluation_pusher.py
-      md5: bd8ac007f06cd4b201711fc30a72b291
-      size: 8665
+      md5: b6154d343d9d0fe23ff4e1cba526b877
+      size: 8763
     outs:
     - path: prediction_service/model.pkl
       md5: 1160f241a6458c4d9905f156c2245107

@@ -13,6 +13,7 @@ import shutil
 
 
 
+
 class ModelEvaluationAndPusher:
 
     def __init__(self, model_evaluation_config: ModelEvaluationConfig,
@@ -97,6 +98,7 @@ class ModelEvaluationAndPusher:
     def initiate_model_evaluation(self) -> ModelEvaluationArtifact:
         try:
             trained_model_file_path = Path(self.model_trainer_artifact.trained_model_file_path)
+            logging.info(f"Installing model evaluation artifacts {trained_model_file_path}")
             trained_model_object = load_bin(trained_model_file_path)
 
             train_file_path = Path(self.data_ingestion_artifact.train_file_path)
@@ -160,6 +162,7 @@ class ModelEvaluationAndPusher:
                 logging.info(response)
 
                 shutil.copy(response.evaluated_model_path,self.model_pusher_config.model_pusher_file_path)
+
 
                 return response
 

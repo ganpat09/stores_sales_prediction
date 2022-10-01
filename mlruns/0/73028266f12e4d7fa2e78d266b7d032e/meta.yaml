@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/FSDS/DS%20internship/stores_sales_prediction/mlruns/0/73028266f12e4d7fa2e78d266b7d032e/artifacts
+end_time: 1664630744209
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 73028266f12e4d7fa2e78d266b7d032e
+run_uuid: 73028266f12e4d7fa2e78d266b7d032e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1664630744163
+status: 4
+tags: []
+user_id: pc
