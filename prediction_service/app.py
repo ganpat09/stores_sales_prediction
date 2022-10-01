@@ -20,7 +20,7 @@ import os
    Item_Outlet_Sales          :  float
 
 """
-os.listdir()
+print(os.listdir())
 model = joblib.load("/app/model.pkl")
 st.text_input(label="Item_Identifier")
 st.text_input(label="Item_Weight")
