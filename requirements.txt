@@ -13,5 +13,5 @@ joblib
 plotly
 streamlit
 mlflow
-xgboost
+xgboost==1.5.0
 -e .
