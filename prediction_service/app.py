@@ -20,8 +20,12 @@ import os
    Item_Outlet_Sales          :  float
 
 """
-os.chdir("prediction_service")
-model = joblib.load(Path("prediction_service/model.pkl"))
+current_path = os.getcwd()
+
+# getting the current path
+
+model_path = os.path.join(current_path, 'model.pkl')
+model = joblib.load(model_path)
 st.text_input(label="Item_Identifier")
 st.text_input(label="Item_Weight")
 st.text_input(label="Item_Fat_Content")
