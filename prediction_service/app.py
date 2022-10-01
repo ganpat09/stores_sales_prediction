@@ -1,7 +1,7 @@
-import sklearn
-import pandas as pd
 import streamlit as st
 import joblib
+from pathlib import Path
+import os
 
 """
 # Welcome to Streamlit!
@@ -20,8 +20,8 @@ import joblib
    Item_Outlet_Sales          :  float
 
 """
-
-model = joblib.load("model.pkl")
+os.cwd()
+model = joblib.load("/app/model.pkl")
 st.text_input(label="Item_Identifier")
 st.text_input(label="Item_Weight")
 st.text_input(label="Item_Fat_Content")
