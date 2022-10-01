@@ -21,7 +21,7 @@ import os
 
 """
 st.text(os.listdir())
-model = joblib.load("prediction_service/model.pkl")
+model = joblib.load(Path("prediction_service/model.pkl"))
 st.text_input(label="Item_Identifier")
 st.text_input(label="Item_Weight")
 st.text_input(label="Item_Fat_Content")
