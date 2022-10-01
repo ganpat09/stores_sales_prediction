@@ -13,4 +13,5 @@ joblib
 plotly
 streamlit
 mlflow
+xgboost
 -e .

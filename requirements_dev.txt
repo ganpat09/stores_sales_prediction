@@ -13,6 +13,7 @@ joblib
 plotly
 streamlit
 mlflow
+xgboost
 -e .
 
 ## Dev requirements
