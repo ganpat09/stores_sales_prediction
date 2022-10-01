@@ -20,7 +20,7 @@ import os
    Item_Outlet_Sales          :  float
 
 """
-st.text(os.chdir("prediction_service"))
+os.chdir("prediction_service")
 model = joblib.load(Path("prediction_service/model.pkl"))
 st.text_input(label="Item_Identifier")
 st.text_input(label="Item_Weight")
