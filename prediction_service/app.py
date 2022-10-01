@@ -1,7 +1,6 @@
 import streamlit as st
 import joblib
 import pandas as pd
-from pathlib import Path
 import os
 """
 # Sale Store Prediction
@@ -94,7 +93,7 @@ with form:
       }
       df = pd.DataFrame(data=data,index=[0])
       result = model.predict(df)
-      st.write("result = {0}".format(result))
+      st.write("result = {0}".format(result[0]))
 
 
 
