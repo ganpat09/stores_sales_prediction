@@ -47,7 +47,7 @@ with batch:
 
 with form:
    st.subheader("Form Prediction")
-   st.write(form)
+   #st.write(form)
    item_Identifier = st.text_input(label="Item Identifier")
    item_Weight = st.text_input(label="Item Weight")
 
