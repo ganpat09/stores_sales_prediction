@@ -23,6 +23,7 @@ import os
 current_path = os.getcwd()
 
 st.text(current_path)
+st.text(os.listdir(current_path))
 
 # getting the current path
 
