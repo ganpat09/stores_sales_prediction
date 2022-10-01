@@ -1,8 +1,7 @@
 import streamlit as st
-import joblib
+import pickle
 from pathlib import Path
 import os
-import saleStorePredictor
 """
 # Welcome to Streamlit!
 
@@ -29,7 +28,7 @@ st.text(os.listdir(current_path))
 
 model_path = os.path.join(current_path,"model.pkl")
 with open(model_path, 'rb') as handle:
-    model = joblib.load(handle)
+    model = pickle.load(handle)
 
 
 st.text_input(label="Item_Identifier")
