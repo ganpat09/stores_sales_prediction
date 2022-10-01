@@ -26,7 +26,7 @@ st.text(os.listdir(current_path))
 
 # getting the current path
 
-model_path = os.path.join(current_path,"model.pkl")
+model_path = os.path.join(current_path,"prediction_service","model.pkl")
 with open(model_path, 'rb') as handle:
     model = pickle.load(handle)
 
