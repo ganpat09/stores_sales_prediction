@@ -1,2 +1,3 @@
 streamlit
+storesSalePrediction==0.0.0
 
