@@ -1,3 +1,4 @@
 streamlit
+pyYAML
 storesSalePrediction==0.0.0
 
