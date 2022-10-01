@@ -25,7 +25,10 @@ current_path = os.getcwd()
 # getting the current path
 
 model_path = Path("prediction_service/model.pkl")
-model = joblib.load(model_path)
+with open(model_path, 'rb') as handle:
+    model = joblib.load(handle)
+
+    
 st.text_input(label="Item_Identifier")
 st.text_input(label="Item_Weight")
 st.text_input(label="Item_Fat_Content")
